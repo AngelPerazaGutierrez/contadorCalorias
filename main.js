@@ -1,5 +1,5 @@
 
-
+const resultado = document.getElementById("resultado");
 
 function calcularCalorias() {
 
@@ -9,10 +9,9 @@ function calcularCalorias() {
     const actividad = document.querySelector ("#actividad");
     const sexo =  document.querySelector('input[name="sexo"]:checked').value
   
-    if(!edad|| !peso || !altura || actividad){
-    
-        mostrarMensajeDeError("faltan campos por llenar");
-
+    if (!edad || !peso || !altura || !actividad ==="") { 
+        mostrarMensajeDeError("Faltan campos por llenar");
+        return; 
     }
     
 
