@@ -1,5 +1,10 @@
-
+const formularioCalculadora = document.getElementById('formulario-calculadora')
 const resultado = document.getElementById("resultado");
+
+formularioCalculadora.addEventListener('submit' , (evento) => {
+evento.preventDefault();
+calcularCalorias();
+})
 
 function calcularCalorias() {
 
