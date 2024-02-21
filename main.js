@@ -7,18 +7,19 @@ calcularCalorias();
 })
 
 function calcularCalorias() {
+    const edad = document.querySelector("#edad").value;
+    const peso = document.querySelector("#peso").value;
+    const altura = document.querySelector("#altura").value;
+    const actividad = document.querySelector("#actividad").value;
+    const sexo = document.querySelector('input[name="genero"]:checked').value; 
 
-    const edad = document.querySelector ("#edad").value;
-    const peso = document.querySelector ("#peso").value;
-    const altura = document.querySelector ("#altura").value;
-    const actividad = document.querySelector ("#actividad");
-    const sexo =  document.querySelector('input[name="sexo"]:checked').value
-  
-    if (!edad || !peso || !altura || !actividad ==="") { 
+    const resultado = document.getElementById("resultado"); 
+
+    if (!edad || !peso || !altura || actividad === "") { 
+        
         mostrarMensajeDeError("Faltan campos por llenar");
-        return; 
+        return
     }
-    
 
     const multiplicadorTMB = {
         peso: 10,
@@ -26,26 +27,34 @@ function calcularCalorias() {
         edad: 5
     };
 
-     let calculoCalorias = sexo === 'femenino' ?
-     actividad *((multiplicadorTMB.peso * peso) +
-     (multiplicadorTMB.altura * altura)-
-     (multiplicadorTMB.edad * edad ))- 161:
-     actividad * ((multiplicadorTMB.peso * peso) +
-     (multiplicadorTMB.altura * altura) -
-     (multiplicadorTMB.edad * edad ))-5;
-    
-     
+    let calculoCalorias =
+        sexo === "F" 
+            ? actividad *
+              (multiplicadorTMB.peso * peso +
+                  multiplicadorTMB.altura * altura -
+                  multiplicadorTMB.edad * edad) -
+              161
+            : actividad *
+              (multiplicadorTMB.peso * peso +
+                  multiplicadorTMB.altura * altura -
+                  multiplicadorTMB.edad * edad) -
+              5;
 
     resultado.innerHTML = `
-        <div class=" card-body d-flex flex-column justify-content-center align-items-center h-100" id="calculo">
+        <div class="card-body d-flex flex-column justify-content-center align-items-center h-100" id="calculo">
             <h5 class="card-title h2">Calorías requeridas</h5>
             <div class="mb-3 w-100">
                 <input class="form-control text-center" value="${Math.floor(calculoCalorias)} kcal" style="font-size: 2rem" disabled>
             </div>
         </div>
-    `
-    console.log(calculoCalorias);  
+    `;
+
+    console.log(calculoCalorias);
 }
+
+function mostrarMensajeDeError(mensaje) {
+}
+
 
 function mostrarMensajeDeError(msg) {
     const calculo = document.querySelector('#calculo');
