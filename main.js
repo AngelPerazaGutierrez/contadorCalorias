@@ -8,13 +8,18 @@ calcularCalorias();
 
 function calcularCalorias() {
 
-    const edad = document.querySelector ("#edad").value;
-    const peso = document.querySelector ("#peso").value;
-    const altura = document.querySelector ("#altura").value;
+    //funcion que muestra en la ventana dos
+    aparecerResultado()
+
+    const edad = document.querySelector ("#edad");
+    const peso = document.querySelector ("#peso");
+    const altura = document.querySelector ("#altura");
     const actividad = document.querySelector ("#actividad");
-    const sexo =  document.querySelector('input[name="sexo"]:checked').value
-  
-    if (!edad || !peso || !altura || !actividad ==="") { 
+    const genero = document.querySelector('input[name="genero"]:checked');
+    //console.log(genero.value)
+
+    //actividad ** != que sea diferente a vacio, osea que tenga algo y luego niego eso.
+    if (!(edad.value && peso.value && altura.value)) { 
         mostrarMensajeDeError("Faltan campos por llenar");
         return
     }
@@ -25,25 +30,31 @@ function calcularCalorias() {
         edad: 5
     };
 
-     let calculoCalorias = sexo === 'femenino' ?
-     actividad *((multiplicadorTMB.peso * peso) +
-     (multiplicadorTMB.altura * altura)-
-     (multiplicadorTMB.edad * edad ))- 161:
-     actividad * ((multiplicadorTMB.peso * peso) +
-     (multiplicadorTMB.altura * altura) -
-     (multiplicadorTMB.edad * edad ))-5;
-    
+    let calculoCalorias;
+     if(genero.id == 'femenino') {
+        // mujeres: valor actividad * (10 * peso en kg) + (6.25 * altura en cm) - (5x edad en años) - 161
+         calculoCalorias = actividad.value *   ((multiplicadorTMB.peso * peso.value) +
+                                                (multiplicadorTMB.altura * altura.value) - 
+                                                (multiplicadorTMB.edad * edad.value)) - 161;
+    } else {
+        // hombres: valor actividad * (10 * peso en kg) + (6.25 * altura en cm) - (5x edad en años) + 5
+        calculoCalorias = actividad.value *    ((multiplicadorTMB.peso * peso.value)+
+                                                (multiplicadorTMB.altura * altura.value) - 
+                                                (multiplicadorTMB.edad * edad.value)) + 5;
+    }
+    console.log(calculoCalorias);  
      
 
     resultado.innerHTML = `
-        <div class=" card-body d-flex flex-column justify-content-center align-items-center h-100" id="calculo">
-            <h5 class="card-title h2">Calorías requeridas</h5>
-            <div class="mb-3 w-100">
-                <input class="form-control text-center" value="${Math.floor(calculoCalorias)} kcal" style="font-size: 2rem" disabled>
+        <div class="card-body d-flex flex-column justify-content-center align-items-center h=100" id="calculo">
+            <h5 class="card-title h2">Calorias Requeridas</h5>
+            <div class="my-3 w-100"> 
+                <input class="form-control text-center" value="${Math.floor(calculoCalorias)}" disabled style="font-size: 2rem">
             </div>
         </div>
+
     `
-    console.log(calculoCalorias);  
+    
 }
 
 function mostrarMensajeDeError(mensaje) {
