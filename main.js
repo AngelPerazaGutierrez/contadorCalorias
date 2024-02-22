@@ -1,5 +1,6 @@
 const formularioCalculadora = document.getElementById('formulario-calculadora')
 const resultado = document.getElementById("resultado");
+const grupoGeneracion = document.getElementById("grupoGeneracion");
 
 formularioCalculadora.addEventListener('submit' , (evento) => {
 evento.preventDefault();
@@ -19,7 +20,19 @@ function calcularCalorias() {
     const genero = document.querySelector('input[name="genero"]:checked');
     const nombrePaciente = document.querySelector("#nombrePaciente");
     const numeroDocumento = document.querySelector("#cc");
-    //console.log(genero.value)
+
+    //grupo poblacional
+
+    function grupoPoblacional (edad){
+        if (edad.value >= 15 && edad.value <= 29){
+            return "Joven";
+        } else if (edad.value >= 30 && edad.value <= 59) {
+            return "adultos";
+        } else {
+            return "Adulto mayor";
+        }
+    }
+    let poblacion = grupoPoblacional(edad);
 
     //actividad ** != que sea diferente a vacio, osea que tenga algo y luego niego eso. esta es la utli
     if (!(edad.value && peso.value && altura.value)) { 
@@ -45,10 +58,8 @@ function calcularCalorias() {
                                                 (multiplicadorTMB.altura * altura.value) - 
                                                 (multiplicadorTMB.edad * edad.value)) + 5;
     }
-   
-     console.log(tipoDocumento.value)
 
-    var test = resultado.innerHTML = `
+    resultado.innerHTML = `
         <div class="card-body d-flex flex-column justify-content-center align-items-center h=500" id="calculo">
             <h5 class="card-title h2">Calorias Requeridas</h5>
             <div class="my-3 w-500"> 
@@ -57,13 +68,16 @@ function calcularCalorias() {
                 para el sostenimiento de su TBM " disabled style="font-size: 2rem">
             </div>
         </div>
-
     `
-    console.log(test)
-    
-}
 
-function mostrarMensajeDeError(mensaje) {
+    grupoGeneracion.innerHTML = `<div class="card-body d-flex flex-column justify-content-center align-items-center h=500">
+    <h5 class="card-title h2">Grupo al que perteneces</h5>
+    <div class="my-3 w-500"> 
+        <input class="form-control text-center d-flex flex-column overflow-auto" value="${poblacion}" disabled style="font-size: 2rem">
+    </div>
+    </div>
+    `
+    
 }
 
 
@@ -115,3 +129,4 @@ function desvanecerResultado() {
         }
     }, 10)
 }
+
