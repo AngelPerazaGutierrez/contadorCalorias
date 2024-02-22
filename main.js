@@ -15,7 +15,10 @@ function calcularCalorias() {
     const peso = document.querySelector ("#peso");
     const altura = document.querySelector ("#altura");
     const actividad = document.querySelector ("#actividad");
+    const tipoDocumento = document.querySelector ("#tipoDocumento");
     const genero = document.querySelector('input[name="genero"]:checked');
+    const nombrePaciente = document.querySelector("#nombrePaciente");
+    const numeroDocumento = document.querySelector("#cc");
     //console.log(genero.value)
 
     //actividad ** != que sea diferente a vacio, osea que tenga algo y luego niego eso. esta es la utli
@@ -42,18 +45,21 @@ function calcularCalorias() {
                                                 (multiplicadorTMB.altura * altura.value) - 
                                                 (multiplicadorTMB.edad * edad.value)) + 5;
     }
-    console.log(calculoCalorias);  
-     
+   
+     console.log(tipoDocumento.value)
 
-    resultado.innerHTML = `
-        <div class="card-body d-flex flex-column justify-content-center align-items-center h=100" id="calculo">
+    var test = resultado.innerHTML = `
+        <div class="card-body d-flex flex-column justify-content-center align-items-center h=500" id="calculo">
             <h5 class="card-title h2">Calorias Requeridas</h5>
-            <div class="my-3 w-100"> 
-                <input class="form-control text-center" value="${Math.floor(calculoCalorias)}" disabled style="font-size: 2rem">
+            <div class="my-3 w-500"> 
+                <input class="form-control text-center" value=" El paciente ${nombrePaciente.value} identificado con ${tipoDocumento.value}
+                NO.${numeroDocumento.value} , requiere un total de ${Math.floor(calculoCalorias)} kcal
+                para el sostenimiento de su TBM " disabled style="font-size: 2rem">
             </div>
         </div>
 
     `
+    console.log(test)
     
 }
 
