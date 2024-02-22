@@ -18,7 +18,7 @@ function calcularCalorias() {
     const genero = document.querySelector('input[name="genero"]:checked');
     //console.log(genero.value)
 
-    //actividad ** != que sea diferente a vacio, osea que tenga algo y luego niego eso.
+    //actividad ** != que sea diferente a vacio, osea que tenga algo y luego niego eso. esta es la utli
     if (!(edad.value && peso.value && altura.value)) { 
         mostrarMensajeDeError("Faltan campos por llenar");
         return
