@@ -1,5 +1,6 @@
 const formularioCalculadora = document.getElementById('formulario-calculadora')
 const resultado = document.getElementById("resultado");
+const grupoGeneracion = document.getElementById("grupoGeneracion");
 
 formularioCalculadora.addEventListener('submit' , (evento) => {
 evento.preventDefault();
@@ -15,8 +16,23 @@ function calcularCalorias() {
     const peso = document.querySelector ("#peso");
     const altura = document.querySelector ("#altura");
     const actividad = document.querySelector ("#actividad");
+    const tipoDocumento = document.querySelector ("#tipoDocumento");
     const genero = document.querySelector('input[name="genero"]:checked');
-    //console.log(genero.value)
+    const nombrePaciente = document.querySelector("#nombrePaciente");
+    const numeroDocumento = document.querySelector("#cc");
+
+    //grupo poblacional
+
+    function grupoPoblacional (edad){
+        if (edad.value >= 15 && edad.value <= 29){
+            return "Joven";
+        } else if (edad.value >= 30 && edad.value <= 59) {
+            return "adultos";
+        } else {
+            return "Adulto mayor";
+        }
+    }
+    let poblacion = grupoPoblacional(edad);
 
     //actividad ** != que sea diferente a vacio, osea que tenga algo y luego niego eso. esta es la utli
     if (!(edad.value && peso.value && altura.value)) { 
@@ -42,22 +58,26 @@ function calcularCalorias() {
                                                 (multiplicadorTMB.altura * altura.value) - 
                                                 (multiplicadorTMB.edad * edad.value)) + 5;
     }
-    console.log(calculoCalorias);  
-     
 
     resultado.innerHTML = `
-        <div class="card-body d-flex flex-column justify-content-center align-items-center h=100" id="calculo">
+        <div class="card-body d-flex flex-column justify-content-center align-items-center h=500" id="calculo">
             <h5 class="card-title h2">Calorias Requeridas</h5>
-            <div class="my-3 w-100"> 
-                <input class="form-control text-center" value="${Math.floor(calculoCalorias)}" disabled style="font-size: 2rem">
+            <div class="my-3 w-500"> 
+                <input class="form-control text-center d-flex flex-column overflow-auto" value=" El paciente ${nombrePaciente.value} identificado con ${tipoDocumento.value}
+                NO.${numeroDocumento.value} , requiere un total de ${Math.floor(calculoCalorias)} kcal
+                para el sostenimiento de su TBM " disabled style="font-size: 2rem">
             </div>
         </div>
+    `
 
+    grupoGeneracion.innerHTML = `<div class="card-body d-flex flex-column justify-content-center align-items-center h=500">
+    <h5 class="card-title h2">Grupo al que perteneces</h5>
+    <div class="my-3 w-500"> 
+        <input class="form-control text-center d-flex flex-column overflow-auto" value="${poblacion}" disabled style="font-size: 2rem">
+    </div>
+    </div>
     `
     
-}
-
-function mostrarMensajeDeError(mensaje) {
 }
 
 
@@ -109,3 +129,4 @@ function desvanecerResultado() {
         }
     }, 10)
 }
+

@@ -51,6 +51,23 @@
               <fieldset>
                 <legend class="h2 text-center">Calculadora de Calorías</legend>
                 <div class="mb-3">
+                  <label for="tipoDocumento" class="form-label h6">Tipo documento</label>
+                  <select id="tipoDocumento" class="form-select">
+                    <option></option>
+                    <option value="Cédula de Ciudadania">Cédula de Ciudadania</option>
+                    <option value="Tarjeta de identidad">Tarjeta de identidad</option>
+                    <option value="Cédula de extranjeria">Cédula de extranjeria</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="altura" class="form-label h6">Numero de documento</label>
+                  <input type="number" id="cc" class="form-control" placeholder="Digíte su numero de documento">
+                </div>
+                <div class="mb-3">
+                  <label for="altura" class="form-label h6">Tu nombre</label>
+                  <input type="text" id="nombrePaciente" class="form-control" placeholder="Digíte su nombre y apellido">
+                </div>
+                <div class="mb-3">
                   <label for="edad" class="form-label h6">Edad</label>
                   <input type="number" id="edad" class="form-control" min="15" max="80" placeholder="Digíte su edad">
                 </div>
@@ -100,9 +117,12 @@
               </fieldset>
             </form>
           </div>
-
-          <article class="card col" id="resultado">
-          </article>
+          <div>
+            <article class="card col" id="resultado">
+            </article>
+            <article class="card col" id="grupoGeneracion">
+            </article>
+          </div>          
         </div>
       </section>
     </main>
