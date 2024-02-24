@@ -51,29 +51,44 @@
               <fieldset>
                 <legend class="h2 text-center">Calculadora de Calorías</legend>
                 <div class="mb-3">
+                  <label for="tipoDocumento" class="form-label h6">Tipo documento</label>
+                  <select id="tipoDocumento" class="form-select">                    
+                    <option value="Cédula de Ciudadania">Cédula de Ciudadania</option>
+                    <option value="Tarjeta de identidad">Tarjeta de identidad</option>
+                    <option value="Cédula de extranjeria">Cédula de extranjeria</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="altura" class="form-label h6">Numero de documento</label>
+                  <input type="number" id="cc" class="form-control" placeholder="Digíte su numero de documento" max="99999999999">
+                </div>
+                <div class="mb-3">
+                  <label for="altura" class="form-label h6">Tu nombre</label>
+                  <input type="text" id="nombrePaciente" class="form-control" placeholder="Digíte su nombre y apellido">
+                </div>
+                <div class="mb-3">
                   <label for="edad" class="form-label h6">Edad</label>
                   <input type="number" id="edad" class="form-control" min="15" max="80" placeholder="Digíte su edad">
                 </div>
 
                 <div class="mb-3">
                   <label for="peso" class="form-label h6">Peso</label>
-                  <input type="number" id="peso" class="form-control" placeholder="Digíte su peso en kilogramos">
+                  <input type="number" id="peso" class="form-control" placeholder="Digíte su peso en kilogramos" max="200">
                 </div>
 
                 <div class="mb-3">
                   <label for="altura" class="form-label h6">Altura</label>
-                  <input type="number" id="altura" class="form-control" placeholder="Digíte su altura en centímetros">
+                  <input type="number" id="altura" class="form-control" placeholder="Digíte su altura en centímetros" max="280">
                 </div>
 
                 <div class="mb-3">
                   <label for="actividad" class="form-label h6">Actividad física</label>
-                  <select id="actividad" class="form-select">
-                    <option></option>
-                    <option value="1.2">Poco o ningún ejercicio</option>
-                    <option value="1.375">Ejercicio ligero (1-3 días a la semana)</option>
-                    <option value="1.55">Ejercicio moderado (3-5 días a la semana)</option>
-                    <option value="1.725">Ejercicio fuerte (6-7 días a la semana)</option>
-                    <option value="1.9">Ejercicio muy fuerte (dos veces al día, entrenamientos muy duros)</option>
+                  <select id="actividad" class="form-select">                    
+                    <option value=1.2>Poco o ningún ejercicio</option>
+                    <option value= 1.375>Ejercicio ligero (1-3 días a la semana)</option>
+                    <option value=1.55>Ejercicio moderado (3-5 días a la semana)</option>
+                    <option value=1.725>Ejercicio fuerte (6-7 días a la semana)</option>
+                    <option value=1.9>Ejercicio muy fuerte (dos veces al día, entrenamientos muy duros)</option>
                   </select>
                 </div>
                 
@@ -99,10 +114,9 @@
                 </div>
               </fieldset>
             </form>
-          </div>
-
-          <article class="card col" id="resultado">
-          </article>
+          </div>          
+            <p class="card col" id="resultado">
+            </p>
         </div>
       </section>
     </main>

@@ -1,22 +1,48 @@
 const formularioCalculadora = document.getElementById('formulario-calculadora')
 const resultado = document.getElementById("resultado");
+const grupoGeneracion = document.getElementById("grupoGeneracion");
 
 formularioCalculadora.addEventListener('submit' , (evento) => {
 evento.preventDefault();
 calcularCalorias();
+
 })
 
 function calcularCalorias() {
-    const edad = document.querySelector("#edad").value;
-    const peso = document.querySelector("#peso").value;
-    const altura = document.querySelector("#altura").value;
-    const actividad = document.querySelector("#actividad").value;
-    const sexo = document.querySelector('input[name="genero"]:checked').value; 
 
-    const resultado = document.getElementById("resultado"); 
+    //funcion que muestra en la ventana dos
+    aparecerResultado()
+    
+    const edadI = document.querySelector ("#edad");
+    const pesoI = document.querySelector ("#peso");
+    const alturaI = document.querySelector ("#altura");
+    const actividadI = document.querySelector ("#actividad");
+    const tipoDocumento = document.querySelector ("#tipoDocumento");
+    const genero = document.querySelector('input[name="genero"]:checked');
+    const nombrePaciente = document.querySelector("#nombrePaciente");
+    const numeroDocumento = document.querySelector("#cc");
 
-    if (!edad || !peso || !altura || actividad === "") { 
-        
+
+    const edad = parseInt(edadI.value)
+    const peso = parseInt(pesoI.value)
+    const altura = parseInt(alturaI.value)
+    const actividad=parseInt(actividadI.value)
+    
+    //grupo poblacional
+
+    function grupoPoblacional (edad){
+        if (edad >= 15 && edad <= 29){
+            return "Joven";
+        } else if (edad >= 30 && edad <= 59) {
+            return "adultos";
+        } else {
+            return "Adulto mayor";
+        }
+    }
+    let poblacion = grupoPoblacional(edad);
+
+    //actividad ** != que sea diferente a vacio, osea que tenga algo y luego niego eso. esta es la utli
+    if (!(edad && peso && altura)) { 
         mostrarMensajeDeError("Faltan campos por llenar");
         return
     }
@@ -26,33 +52,32 @@ function calcularCalorias() {
         altura: 6.25,
         edad: 5
     };
-
+   
     let calculoCalorias =
-        sexo === "F" 
-            ? actividad *
-              (multiplicadorTMB.peso * peso +
-                  multiplicadorTMB.altura * altura -
-                  multiplicadorTMB.edad * edad) -
-              161
-            : actividad *
-              (multiplicadorTMB.peso * peso +
-                  multiplicadorTMB.altura * altura -
-                  multiplicadorTMB.edad * edad) -
-              5;
+    genero.value === "F" 
+        ? actividad *
+          (multiplicadorTMB.peso * peso +
+              multiplicadorTMB.altura * altura -
+              multiplicadorTMB.edad * edad) -
+          161
+        : actividad *
+          (multiplicadorTMB.peso * peso +
+              multiplicadorTMB.altura * altura -
+              multiplicadorTMB.edad * edad) -
+          5;
 
+           console.log(actividad);
+           
     resultado.innerHTML = `
-        <div class="card-body d-flex flex-column justify-content-center align-items-center h-100" id="calculo">
-            <h5 class="card-title h2">Calorías requeridas</h5>
-            <div class="mb-3 w-100">
-                <input class="form-control text-center" value="${Math.floor(calculoCalorias)} kcal" style="font-size: 2rem" disabled>
+        <div class="card-body d-flex flex-column justify-content-center align-items-center h=500" id="calculo">
+            <h5 class="card-title h2 mt-5">Calorias Requeridas</h5>
+            <div class="my-3 w-100">
+                <p class="form-control text-center d-flex flex-column disabled" id="resuladoDiv">El paciente ${nombrePaciente.value} identificado con ${tipoDocumento.value}
+                NO.${numeroDocumento.value}, requiere un total de ${Math.floor(calculoCalorias)} kcal
+                para el sostenimiento de su TBM, perteneces al grupo  ${poblacion} 
+                </p>
             </div>
-        </div>
-    `;
-
-    console.log(calculoCalorias);
-}
-
-function mostrarMensajeDeError(mensaje) {
+        </div>  `
 }
 
 
@@ -104,3 +129,6 @@ function desvanecerResultado() {
         }
     }, 10)
 }
+
+
+
