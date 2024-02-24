@@ -70,15 +70,14 @@ function calcularCalorias() {
            
     resultado.innerHTML = `
         <div class="card-body d-flex flex-column justify-content-center align-items-center h=500" id="calculo">
-            <h5 class="card-title h2">Calorias Requeridas</h5>
-            <div class="my-3 w-100 h-100"> 
-                <input class="form-control text-center d-flex flex-column" value=" El paciente ${nombrePaciente.value} identificado con ${tipoDocumento.value}
-                NO.${numeroDocumento.value} , requiere un total de ${Math.floor(calculoCalorias)} kcal
-                para el sostenimiento de su TBM, perteneces al grupo  ${poblacion}" disabled style="font-size: 2rem">
+            <h5 class="card-title h2 mt-5">Calorias Requeridas</h5>
+            <div class="my-3 w-100">
+                <p class="form-control text-center d-flex flex-column disabled" id="resuladoDiv">El paciente ${nombrePaciente.value} identificado con ${tipoDocumento.value}
+                NO.${numeroDocumento.value}, requiere un total de ${Math.floor(calculoCalorias)} kcal
+                para el sostenimiento de su TBM, perteneces al grupo  ${poblacion} 
+                </p>
             </div>
-        </div>
-    `
-    
+        </div>  `
 }
 
 
@@ -130,4 +129,6 @@ function desvanecerResultado() {
         }
     }, 10)
 }
+
+
 
