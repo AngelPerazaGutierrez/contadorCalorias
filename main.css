@@ -27,11 +27,18 @@ a{
     font-style: normal;
 }
 
+.navbar {
+    background-color: #2f4f4f;
+}
+
+.nav-link {
+    color: antiquewhite;
+    
+}
+
 
 
 li :hover{
-   
-
     background-color: black;
     border-radius: 5px;
 }
@@ -45,7 +52,7 @@ li :hover{
 }
 
 .main-content {
-    background-image:  url('/contadorCalorias/img/fondo.jpg');
+    background-image:  url('img/cover.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -67,27 +74,26 @@ label{
 }
 #resultado {
     display: none;
-    color: black;
-    
+    color: aliceblue;    
 }
+
+
+
 
 #resuladoDiv {
     background: linear-gradient(#808080, #778899);
     font-size: 2rem;
     margin-top: 5%;
     color: aliceblue;  
-    color: black;
     font-size: 25px;
-    
-          
 }
-
-
 /* footer */
 .footer {
     background-color: #2f4f4f;
-    color: #a0a0a0;
+    color: aliceblue;
     margin: 0;
 }
+
+
 
 
