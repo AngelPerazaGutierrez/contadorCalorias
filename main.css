@@ -1,5 +1,8 @@
+body {
+    background-color: #2f4f4f;
+}
 body::-webkit-scrollbar {
-    width: 8px;
+    width: 8px;    
 }
 
 body::-webkit-scrollbar-track {
