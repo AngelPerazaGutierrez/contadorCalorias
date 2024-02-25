@@ -3,22 +3,43 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    background-color: rgb(0, 0, 0);
+   
+    background-color: white;
 }
 
 body::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    background-color: rgb(122, 0, 0);
+    background-color: black;
 }
 
-/* header */
-.header a {
-    font-size: 1.5em;
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    
+  }
+
+a{
+    color: white;
+    font-size: 25px;
+    font-family: "Fjalla One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
-.header a.active {
-    text-decoration: underline;
-    color: #ff0000 !important;
+
+.navbar {
+    background-color: #2f4f4f;
+}
+
+.nav-link {
+    color: antiquewhite;
+    
+}
+
+
+li :hover{
+    background-color: black;
+    border-radius: 5px;
 }
 
 
@@ -30,34 +51,53 @@ body::-webkit-scrollbar-thumb {
 }
 
 .main-content {
-    background-image: linear-gradient(#000000c7,#00000054), url('/img/cover.png');
+    background-image:  url('img/cover.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
 }
 .main-content .card {
     color:rgb(223, 223, 223);
-    background-color: rgba(0, 0, 0, 0.5)
+    background-color: rgba(0, 0, 0, 0.5);
+    background: linear-gradient(#808080, #778899);
+    opacity: 0.9;
+    border: none;
+
+}
+legend{
+    color: black;
 }
 
+label{
+    color: black;
+}
 #resultado {
     display: none;
+    color: aliceblue;    
 }
 
 
+
+
+#resuladoDiv {
+    background: linear-gradient(#808080, #778899);
+    font-size: 2rem;
+    margin-top: 5%;
+    color: aliceblue;  
+    font-size: 25px;
+}
 /* footer */
 .footer {
-    background-color: #1c1e20;
-    color: #a0a0a0;
+    background-color: #2f4f4f;
+    color: aliceblue;
     margin: 0;
 }
 
-.footer ul {
-    list-style: none;
-    font-size: 1.2rem;
+#teMuestro {
+    font-size: 1rem;
+    text-decoration: none;
 }
 
-.footer a {
-    text-decoration: none;
-    color: rgb(223, 223, 223);
-}
+
+
+
