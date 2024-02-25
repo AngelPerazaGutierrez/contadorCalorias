@@ -37,7 +37,6 @@ a{
 }
 
 
-
 li :hover{
     background-color: black;
     border-radius: 5px;
@@ -92,6 +91,11 @@ label{
     background-color: #2f4f4f;
     color: aliceblue;
     margin: 0;
+}
+
+#teMuestro {
+    font-size: 1rem;
+    text-decoration: none;
 }
 
 
